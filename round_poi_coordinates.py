@@ -42,10 +42,4 @@ z = round(z,1)
 new_coordinates = {'x': x, 'y':y, 'z':z}
 isocenter_poi.Point = new_coordinates
 
-#This doesnt work on "ExpandoObjects"
-##round to one decimal the x, y, z coordinates of the POI
-#poi_geometries[isocenter_name].Point.x = round(isocenter_poi.Point.x,1)
-#poi_geometries[isocenter_name].Point.y = round(isocenter_poi.Point.y,1)
-#poi_geometries[isocenter_name].Point.z = round(isocenter_poi.Point.z,1)
-
 patient.Save()
