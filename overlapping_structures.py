@@ -52,53 +52,38 @@ for roi in selected_rois:
 
 #------------------------------------------------------------------------------
 #Create boolean ROIs for the selected organs      
+original_name = r"Bladder_ICTP"
+ptv_name = 'PTV_ICTP'
 
-#Create an empty ROI
-ename = 'empty'
-ecolor = '#FFFF00FF' #ARGB value
+#Create an empty ROI to start
+#ROI parameters
+ename = original_name+ "_mPTV"
+ecolor = '#FFFF00FF' #ARGB value, purple
 etype = 'Control'
-#etissuename = None
-#erbecelltype = None
-#eroimaterial = None 
-#
-#boolean_roi = case.PatientModel.CreateRoi(
-#        Name=ename, Color=ecolor, Type=etype,
-#        TissueName=etissuename, RbeCellTypeName=erbecelltype,
-#        RoiMaterial=eroimaterial)
-
+#create ROI
 boolean_roi = case.PatientModel.CreateRoi(Name=ename, Color=ecolor, Type=etype)
 
-#now create an algebra roi from this
+#Create ROI algebra to fill the empty ROI
 #margin settings
-margin_expand = {'Type': "Expand", 'Superior': 0.5, 'Inferior': 0.5, 
-                 'Anterior': 0.5, 'Posterior': 0.5, 'Right': 0.5, 'Left': 0.5}
+margin_expand = {'Type': "Expand", 'Superior': margin, 'Inferior': margin, 
+                 'Anterior': margin, 'Posterior': margin, 'Right': margin, 
+                 'Left': margin}
 margin_same = {'Type': "Expand", 'Superior': 0, 'Inferior': 0, 
                  'Anterior': 0, 'Posterior': 0, 'Right': 0, 'Left': 0}
-
-expressiona = {'Operation': "Union", 'SourceRoiNames': [r"Bladder_ICTP"], 
+#expressions (organ and PTV+margin)
+expressiona = {'Operation': "Union", 'SourceRoiNames': [original_name], 
                'MarginSettings': margin_same }
-    
-expressionb = {'Operation': "Union", 'SourceRoiNames': [r"PTV_ICTP"], 
+expressionb = {'Operation': "Union", 'SourceRoiNames': [ptv_name], 
                'MarginSettings': margin_expand}
 
-#boolean_roi.CreateAlgebraGeometry(
-#    Examination=examination, Algorithm='Auto', 
-#    )
-
-
-###copied from script
-with CompositeAction('ROI Algebra (empty)'):
-
+#do ROI algebra 
+with CompositeAction('ROI Algebra'):
   expression = boolean_roi.SetAlgebraExpression(ExpressionA=expressiona, 
                                                 ExpressionB=expressionb, 
                                                 ResultOperation="Subtraction", 
                                                 ResultMarginSettings=margin_same)
 
   expression.UpdateDerivedGeometry(Examination=examination, Algorithm="Auto")
-
   # CompositeAction ends 
-
-
-
 
 
