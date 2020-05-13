@@ -18,22 +18,19 @@ structures = case.PatientModel.StructureSets[examination.Name]
 rois = case.PatientModel.RegionsOfInterest 
 
 #ROI names
-organ_name = 'Bladder_ICTP'
 ptv_name = 'PTV_ICTP'
+ctv_name = 'CTV_ICTP'
 external_name = 'External_ICTP'
 
-##comparison distance
-#distance = structures.RoiSurfaceToSurfaceDistanceBasedOnDT(ReferenceRoiName = ptv_name,
-#                                                           TargetRoiName = organ_name)
+#ROIs to exclude from the comparisons
+exclusion_list = [ptv_name, ctv_name, external_name]
 
 #create empty dictionary to store results
 distances = {}
 
 #loop over all rois to calculate distance to PTV
 for roi in rois:
-    if roi.Name == ptv_name : #exclude comparison of PTV to itself
-        continue
-    elif roi.Name== external_name: #exclude comparison to external ROI
+    if roi.Name in exclusion_list : #exclude ROIs from the comparison
         continue
     else:
         distance = structures.RoiSurfaceToSurfaceDistanceBasedOnDT(
