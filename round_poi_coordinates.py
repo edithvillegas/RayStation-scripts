@@ -4,7 +4,7 @@ IronPython 2.7
 Created on Wed May 13 00:10:48 2020
 @author: EV
 
-Rounds the coordinates of a POI to one decimal
+Rounds the coordinates of a POI
 """
 
 from connect import *
@@ -40,6 +40,9 @@ z = round(z,1)
 #change the coordinates. 
 #use a Python dictionary that contains the properties of the ExpandoObjectas keys
 new_coordinates = {'x': x, 'y':y, 'z':z}
-isocenter_poi.Point = new_coordinates
 
-patient.Save()
+#Undo group
+with CompositeAction('Change POI Coordinates'):
+    isocenter_poi.Point = new_coordinates
+
+#patient.Save() #this makes undoing the last action not possible
