@@ -22,19 +22,19 @@ roi_geometries = case.PatientModel.StructureSets[examination.Name].RoiGeometries
 roi_centers = {}
 roi_volumes = {}
 #create empty dictionaries for other parameters
-roi_types = {}
+roi_types = {} 
 roi_materials= {}
 roi_biological = {}
 
 #iterate over all rois
 for roi in roi_geometries:
     #volumes and centers
-    center = roi.GetCenterOfRoi()
-    roi_centers[roi.OfRoi.Name] = [center.x, center.y, center.z]
-    roi_volumes[roi.OfRoi.Name] = roi.GetRoiVolume()
+    center = roi.GetCenterOfRoi() #center of ROI coordinates
+    roi_centers[roi.OfRoi.Name] = [center.x, center.y, center.z] 
+    roi_volumes[roi.OfRoi.Name] = roi.GetRoiVolume() #in cm^3
     
     #other parameteres
-    roi_types[roi.OfRoi.Name] = roi.OfRoi.Type
+    roi_types[roi.OfRoi.Name] = roi.OfRoi.Type #Organ, Target, etc.
     roi_materials[roi.OfRoi.Name] = roi.OfRoi.RoiMaterial
     roi_biological[roi.OfRoi.Name] = [roi.OfRoi.OrganData.OrganType, 
                                   roi.OfRoi.OrganData.RbeCellTypeName, 
