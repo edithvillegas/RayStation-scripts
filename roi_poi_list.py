@@ -45,9 +45,3 @@ if (poi_name in poi_list):
 else:
     print "POI was not found"
     
-##ALTERNATIVE 
-#poi_geometries = case.PatientModel.StructureSets[examination.Name].PoiGeometries
-#
-#for points in poi_geometries:
-#    print points.OfPoi.Name
-    
