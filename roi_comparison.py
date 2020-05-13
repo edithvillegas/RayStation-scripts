@@ -21,12 +21,12 @@ structures = case.PatientModel.StructureSets[examination.Name]
 roi_geometries = structures.RoiGeometries
 
 #ROIs
-ptv_name = 'PTV_ICTP' 
-organ = 'Bladder_ICTP'
+roia = 'PTV' 
+roib = 'Bladder'
 
 #Compute overlap measures
-overlap_measures = structures.ComparisonOfRoiGeometries(RoiA=ptv_name, 
-                                RoiB=organ, ComputeDistanceToAgreementMeasures = True )
+overlap_measures = structures.ComparisonOfRoiGeometries(RoiA=roia, 
+                                RoiB=roib, ComputeDistanceToAgreementMeasures = True )
 
 
 #decide if ROIs overlap
@@ -39,20 +39,10 @@ else:
 #save comparison results to a text file
 file = open(r"ROI_comparison.txt", 'a')
 file.write("##### ROI comparison ##### \r\n")
-file.write(ptv_name)
+file.write(roia)
 file.write("\n")
-file.write(organ)
+file.write(roib)
 file.write("\n")
 file.write(str(overlap_measures))
 file.write("\n")
 file.close()
-
-
-
-
-
-
-
-
-
-
