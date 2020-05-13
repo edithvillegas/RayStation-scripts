@@ -16,6 +16,7 @@ patient = get_current("Patient")
 examination = get_current("Examination")
 
 ptv_name = 'PTV_ICTP' #name of the target ROI
+poi_name = "isocenter"
 
 # Get ROI geometries 
 roi_geometries = case.PatientModel.StructureSets[examination.Name].RoiGeometries
@@ -30,11 +31,19 @@ except:
 #save the coordinates in a dictionary
 isocenter_coordinates = {'x':ptv_center.x, 'y':ptv_center.y, 'z':ptv_center.z}
 
+#delete POI if it already exists
+pois = case.PatientModel.PointsOfInterest
+try:
+    pois[poi_name].DeleteRoi()
+    print 'deleted previous POI'
+except:
+    print 'creating POI'
+    
 #Create a POI from the coordinates 
 with CompositeAction('Create isocenter POI'):
     isocenter_poi = case.PatientModel.CreatePoi(Examination=examination, 
     Point=isocenter_coordinates, 
-    Volume=0, Name=r"Script_Isocenter", Color="Red", VisualizationDiameter=1, 
+    Volume=0, Name=poi_name, Color="Red", VisualizationDiameter=1, 
     Type="Isocenter")
 
-patient.Save() #save changes (created POI), this is necessary before next step
+patient.Save() #save changes (created POI)
