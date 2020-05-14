@@ -51,8 +51,9 @@ for roi in roi_distances:
 
 #Check that selected rois are organs
 for roi in selected_rois:
-    pass
-
+    if rois[roi].Type != 'Organ':
+        selected_rois.remove(roi)
+        
 #2------------------------------------------------------------------------------
 #Create boolean ROIs for the selected organs  
 
