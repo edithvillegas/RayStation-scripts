@@ -27,17 +27,24 @@ beam_set = get_current("BeamSet")
 #plan dose
 totaldose =  plan.TreatmentCourse.TotalDose
 
+#case ROIs
+rois = case.PatientModel.RegionsOfInterest 
+roi_geometry = case.PatientModel.StructureSets[examination.Name].RoiGeometries
+
 #dose axis for DVH 
 dose_levels = [x for x in range(start_dose, stop_dose+step_size, step_size)]
 
 #calculate volumes at dose
 dvh_set = {}
-roiname = 'PTV'
-volumes = totaldose.GetRelativeVolumeAtDoseValues(RoiName=roiname, 
+
+for roi in rois:
+    roiname = roi.Name
+    volumes = totaldose.GetRelativeVolumeAtDoseValues(RoiName=roiname, 
                                                   DoseValues=dose_levels)
-dvh_set[roiname] = volumes
+    dvh_set[roiname] = {'volume levels' : list(volumes), 
+           'absolute volume': roi_geometry[roiname].GetRoiVolume()}
 
 #save the data
-file_name = patient.Name+ '1' + '.pickle'
+file_name = patient.Name+ 'DVH' + '.pickle'
 with open(file_name, 'wb') as f:
     pickle.dump(dvh_set, f)
