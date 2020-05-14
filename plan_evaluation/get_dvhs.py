@@ -13,9 +13,9 @@ import pickle
 prescribed_dose = 5000 #cGy
 
 #DVH dose range
-start_dose = prescribed_dose*0
-stop_dose = prescribed_dose*1.10
-step_size = prescribed_dose*0.01 
+start_dose = int(prescribed_dose*0)
+stop_dose = int(prescribed_dose*1.10)
+step_size = int(prescribed_dose*0.01)
 
 #get current patient, case, plan and beam set
 patient = get_current("Patient")
