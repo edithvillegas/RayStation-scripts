@@ -8,15 +8,14 @@ Get DVHs from ROIs
 """
 from connect import *
 import pickle
-import numpy as np
 
 #dose parameters
 prescribed_dose = 5000 #cGy
 
-#DVH range
-start_dose = 0
-stop_dose = 1.10
-step_size = 0.01 
+#DVH dose range
+start_dose = prescribed_dose*0
+stop_dose = prescribed_dose*1.10
+step_size = prescribed_dose*0.01 
 
 #get current patient, case, plan and beam set
 patient = get_current("Patient")
@@ -29,7 +28,7 @@ beam_set = get_current("BeamSet")
 totaldose =  plan.TreatmentCourse.TotalDose
 
 #dose axis for DVH 
-dose_levels = prescribed_dose*np.arange(start_dose, stop_dose+step_size, step_size)
+dose_levels = [x for x in range(start_dose, stop_dose+step_size, step_size)]
 
 #calculate volumes at dose
 dvh_set = {}
