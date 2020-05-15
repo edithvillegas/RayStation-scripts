@@ -18,7 +18,6 @@ plan = get_current("Plan")
 beam_set = get_current("BeamSet")
 
 #dose parameters
-prescribed_dose = beam_set.Prescription.DosePrescriptions[0].DoseValue 
 prescribed_dose = beam_set.Prescription.PrimaryDosePrescription.DoseValue
 
 #DVH dose range
