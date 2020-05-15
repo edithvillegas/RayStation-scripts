@@ -10,20 +10,21 @@ Get DVHs from ROIs
 from connect import *
 import pickle
 
-#dose parameters
-prescribed_dose = 5000 #cGy
-
-#DVH dose range
-start_dose = int(prescribed_dose*0)
-stop_dose = int(prescribed_dose*1.10)
-step_size = int(prescribed_dose*0.01)
-
 #get current patient, case, plan and beam set
 patient = get_current("Patient")
 case = get_current("Case")
 examination = get_current("Examination")
 plan = get_current("Plan")
 beam_set = get_current("BeamSet")
+
+#dose parameters
+prescribed_dose = beam_set.Prescription.DosePrescriptions[0].DoseValue 
+prescribed_dose = beam_set.Prescription.PrimaryDosePrescription.DoseValue
+
+#DVH dose range
+start_dose = int(prescribed_dose*0)
+stop_dose = int(prescribed_dose*1.10)
+step_size = int(prescribed_dose*0.01)
 
 #plan dose
 totaldose =  plan.TreatmentCourse.TotalDose
@@ -43,7 +44,8 @@ for roi in rois:
     volumes = totaldose.GetRelativeVolumeAtDoseValues(RoiName=roiname, 
                                                   DoseValues=dose_levels)
     dvh_set[roiname] = {'volume levels' : list(volumes), 
-           'absolute volume': roi_geometry[roiname].GetRoiVolume()}
+           'absolute volume': roi_geometry[roiname].GetRoiVolume(),
+           'ROI type': roi.Type}
 
 #save the data
 file_name = patient.Name+ 'DVH' + '.pickle'
