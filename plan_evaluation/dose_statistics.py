@@ -50,5 +50,3 @@ for roi in rois:
 file_name = patient.Name + 'ROI_dose' + '.pickle'
 with open(file_name, 'wb') as f:
     pickle.dump(roi_dic, f)
-
-#
