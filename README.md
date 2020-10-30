@@ -1,2 +1,2 @@
 # RayStation-scripts
-Basic python scripts for RayStation.
+Basic python scripts for RayStation Treatment Planning System.
