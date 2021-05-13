@@ -3,7 +3,7 @@ This repository contains a set of IronPython 2.7 scripts for the RayStation Trea
 
 ROI and POI Scripts:
 - **isocenter_poi.py**: Automatically creates a POI from the center of the planning target volume ROI. 
-- **overlapping_structures.py**: Checks which ROIs overlap with the PTV (plus a margin) and creates control structures that dont overlap with the PTV, for each of the
+- **overlapping_structures.py**: Checks which ROIs overlap with the PTV (plus a margin) and creates control structures that don't overlap with the PTV, for each of the
 overlapping ROIs.
 - **roi_characteristics.py**: Gets a summary of data on all the ROIs: center coordinates, volumes, types, materials, and biological parameters.
 - **roi_comparison.py**: Compares 2 ROIs and check if they overlap. Calculates dice similarity coefficient, prevision, sensitivity, specificity,
