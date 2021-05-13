@@ -12,8 +12,8 @@ maximum and mean distance to agreement.
 - round_poi_coordinates.py: Rounds the coordinates of the isocenter POI.
 
 Plan information scripts:
-- 3DCRT_plan_summary.py
-- 3DCRT_plan_summary_all.py
-- dose_statistics.py
-- get_dvhs.py
-- get_dvhs_all_plans.py
+- 3DCRT_plan_summary.py: Exports a summary of the current beam set for a 3DCRT plan.
+- 3DCRT_plan_summary_all.py: Exports a summary of all plans for a patient.
+- dose_statistics.py: Retrieves dose statistics of all ROIs in a plan.
+- get_dvhs.py: Retrieves Dose Volume Histograms (DVH) from the current plan ROIs.
+- get_dvhs_all_plans.py: Retrieves Dose Volume Histograms (DVH) from all ROIs in the current patient case.
