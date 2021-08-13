@@ -2,7 +2,7 @@
 """
 IronPython 2.7
 Created on Fri May 15 00:29:11 2020
-@author: EV
+@author: Edith Villegas
 
 Get DVHs from ROIs
 """

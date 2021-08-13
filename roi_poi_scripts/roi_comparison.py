@@ -2,7 +2,7 @@
 """
 IronPython 2.7
 Created on Wed May 13 19:33:22 2020
-@author: EV
+@author: Edith Villegas
 
 Compare 2 ROIs and check if they overlap.
 Calculates dice similarity coefficient, prevision, sensitivity, specificity,

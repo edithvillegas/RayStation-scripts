@@ -2,7 +2,7 @@
 """
 IronPython 2.7
 Created on Wed May 13 18:28:39 2020
-@author: EV
+@author: Edith Villegas
 
 Get a summary of data on all the ROIs: center coordinates, volumes, types, 
 materials, and biological parameters.

@@ -2,7 +2,7 @@
 """
 IronPython 2.7
 Created on Tue May 12 22:58:45 2020
-@author: EV
+@author: Edith Villegas
 
 Creates a point of interest from the center of the target ROI
 """

@@ -2,7 +2,7 @@
 """
 IronPython 2.7
 Created on Thu May 14 2020
-@author: EV
+@author: Edith Villegas
 
 Summarize dose statistics in all ROIs of a plan
 """

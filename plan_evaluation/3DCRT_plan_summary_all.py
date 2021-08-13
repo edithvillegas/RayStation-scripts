@@ -2,7 +2,7 @@
 """
 IronPython 2.7
 Created on Fri May 15 23:18:49 2020
-@author: EV
+@author: Edith Villegas
 """
 
 from connect import *

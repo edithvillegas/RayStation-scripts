@@ -2,7 +2,7 @@
 """
 IronPython 2.7
 Created on Wed May 13 01:43:42 2020
-@author: EV
+@author: Edith Villegas
 
 Get a list with the names of all the POIs and ROIs,
 check if a ROI or POI name exists

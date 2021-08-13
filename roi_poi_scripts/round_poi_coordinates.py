@@ -2,7 +2,7 @@
 """
 IronPython 2.7
 Created on Wed May 13 00:10:48 2020
-@author: EV
+@author: Edith Villegas
 
 Rounds the coordinates of a POI
 """

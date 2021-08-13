@@ -2,7 +2,7 @@
 """
 IronPython 2.7
 Created on Fri May 15 18:24:40 2020
-@author: EV
+@author: Edith Villegas
 
 Export a summary of the current treatment plan beam set, 3DCRT
 """

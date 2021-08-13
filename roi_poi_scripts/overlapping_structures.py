@@ -2,7 +2,7 @@
 """
 IronPython 2.7
 Created on Wed May 13 21:27:33 2020
-@author: EV
+@author: Edith Villegas
 
 1.Checks which ROIs overlap with the PTV (plus a margin),
 2.Creates control structures that dont overlap with the PTV, for each of the
